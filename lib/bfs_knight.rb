@@ -19,26 +19,27 @@ end
 def bfs_dict(s, t)
   dict = HashMap.new()
   q = []
-  prev = nil
 
   if s == t
     dict[s] = nil
     return dict
   else
-    q.append(s)
+    q.append([s, nil])
   end
 
   while not q.empty?
     current = q.shift()
-    if current == t
-      dict[current] = prev
+    node = current[0]
+    origin = current[1]
+
+    if node == t
+      dict[node] = origin
       return dict
     else
-      dict[current] = prev
-      neighbors = knight_neighbors(current)
+      dict[node] = origin
+      neighbors = knight_neighbors(node)
 
-      neighbors.each {|neighbor| q.append(neighbor)}
-      prev = current
+      neighbors.each {|neighbor| q.append([neighbor, node])}
     end
   end
 end

@@ -10,5 +10,5 @@ Helper to knight_moves. Uses bfs to find shortes path to destination. Returns ha
 ## bfs_path
 Takes travesal record hash and a target, returns an array representing the shortest path from source to target
 
-## neighbors
+## knight_neighbors
 Given a node, returns all neighbors (possible knight moves from that square)
