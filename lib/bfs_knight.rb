@@ -1,6 +1,4 @@
 # Generates an array of neighboring nodes for the given node. Follows the movement rules of a chess night on an 8x8 board
-require 'pry-byebug'
-
 require 'set'
 
 # Is the node invalid for the 8x8 grid
@@ -9,11 +7,11 @@ def invalid?(node)
   y = node[1]
 
   if x > 7 or x < 0
-    return false
-  elsif y > 7 or y < 0
-    return false
-  else
     return true
+  elsif y > 7 or y < 0
+    return true
+  else
+    return false
   end
 end
 
@@ -81,7 +79,6 @@ def bfs_path(dict, t)
     path.append(t)
     path += (bfs_path(dict, dict[t]))
   end
-  binding.pry
   return path
 end
 
@@ -96,7 +93,7 @@ def knight_moves(s, t)
     path.reverse!
     
     # You made it in 3 moves!  Here's your path:
-    puts("You made it in #{path.length} moves! Here's your path:")
+    puts("You made it in #{path.length - 1} moves! Here's your path:")
     path.each {|element| puts("#{element}")}
   end
 end
